@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/r-2.2.9/datatables.min.css"/>
+       
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/r-2.2.9/datatables.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    </div>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <table border="1" class="table table-bordered">
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Fecha Upd</th>
+        <th>Fecha Add</th>
+        <th>Nivel</th>
+        <th>Activo</th>
+        <th>Tienda default</th>
+        <th>Parent</th>
+        <th>Categoria</th>
+      </tr>
+      <%
+      if(userData.length!=0){
+      var i=1;
+      userData.forEach(function(data){
+      %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= data.name %></td>
+          <td><%= data.date_upd %></td>
+          <td><%= data.date_add %></td>
+          <td><%= data.level_depth %></td>
+          <td><%= data.active %></td>
+          <td><%= data.id_shop_default %></td>
+          <td><%= data.id_parent %></td>
+          <td><%= data.id_category %></td>
+        </tr>
+      <% i++; }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="9">No Data Found, please check issue</td>
+        </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
